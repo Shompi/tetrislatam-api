@@ -35,7 +35,28 @@ type LeaderboardPlayer = {
     apm: number
     pps: number
     vs: number
+  },
+
+}
+
+type LeaderboardSums = {
+  by_tr: {
+    tr: number
+    apm: number
+    pps: number
+    vs: number
   }
+  by_glicko: {
+    glicko: number
+    apm: number
+    pps: number
+    vs: number
+  }
+}
+
+type LeaderboardVariations = {
+  tr: number
+  glicko: number
 }
 
 type CountryLeaderboard = {
@@ -47,10 +68,23 @@ type CountryLeaderboard = {
   joined_leaderboard: LeaderboardPlayer[]
   total_tr: number
   total_glicko: number
-}
 
-interface CountryLeaderboardWithPlayers extends CountryLeaderboard {
-  players: LeaderboardPlayer[]
+  /** Only included if `with_players = true` is passed to the query options */
+  players?: LeaderboardPlayer[]
+
+  /** Only included if `precalculate = true` is passed to the query options */
+  sums?: {
+    top_10: LeaderboardSums
+    top_25: LeaderboardSums
+    top_100: LeaderboardSums
+  },
+
+  /** Only included if `precalculate = true` is passed to the query options */
+  variations?: {
+    top_10: LeaderboardVariations
+    top_25: LeaderboardVariations
+    top_100: LeaderboardVariations
+  }
 }
 
 type RankingLeaderboardResponse = {
