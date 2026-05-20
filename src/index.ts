@@ -1,9 +1,11 @@
 import { EventsAPI } from "./api/events.ts"
-import { StatusEndpoints } from "./api/status.ts"
-import { WebpagePosts } from "./api/webposts.ts"
+import { RankingsAPI } from "./api/rankings.ts"
+import { StatusAPI } from "./api/status.ts"
+import { WebpagePostsAPI } from "./api/webposts.ts"
 
 export const TMLAPI = {
-  status: StatusEndpoints,
+  status: StatusAPI,
   events: EventsAPI,
-  webposts: WebpagePosts
+  webposts: WebpagePostsAPI,
+  ranking: RankingsAPI,
 }

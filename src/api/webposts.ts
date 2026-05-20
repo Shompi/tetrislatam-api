@@ -56,11 +56,11 @@ type APIWebpagePostCreationData = {
 }
 
 type APIWebpageEditData = Partial<Omit<APIWebpagePostCreationData, "id">>
+
 type QueryParams = {
   limit?: number
   offset?: number
   postId?: string
-
 }
 
 const Routes = {
@@ -70,10 +70,9 @@ const Routes = {
   delete: (id: string) => `${API_URL}/api/posts/${id}` as const
 }
 
-export const WebpagePosts = {
+export const WebpagePostsAPI = {
   get: async (params?: QueryParams) => await fetch(Routes.getAll(params), { method: "GET" }).then(res => res.json()) as Promise<APIWebpagePost[]>,
-  create: async (token: string, data: APIWebpagePostCreationData) =>
-  {
+  create: async (token: string, data: APIWebpagePostCreationData) => {
 
     if (!token) throw new Error("You must provide an authorization token to this function.")
 
@@ -100,8 +99,7 @@ export const WebpagePosts = {
 
     return await response.json() as Promise<APIWebpagePost>
   },
-  edit: async (token: string, id: string, data: APIWebpageEditData) =>
-  {
+  edit: async (token: string, id: string, data: APIWebpageEditData) => {
 
     if (!token) throw new Error("You must provide an authorization token to this function.")
     if (!id) throw new Error("You must provide a post id to this function.")
@@ -129,8 +127,7 @@ export const WebpagePosts = {
 
     return await response.json() as Promise<APIWebpagePost>
   },
-  delete: async (token: string, id: string) =>
-  {
+  delete: async (token: string, id: string) => {
 
     if (!token) throw new Error("You must provide an authorization token to this function.")
     if (!id) throw new Error("You must provide a post id to this function.")

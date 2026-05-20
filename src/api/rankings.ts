@@ -1,25 +1,27 @@
+import { API_URL, buildUrl } from "./helpers.ts"
+
 type RankingQueryParams = {
   /**
    * The TWO LETTER country code
    * @example "CL"
    */
-  country: string
+  country?: string
 
   /**
    * Whether to include players in the leaderboards
    */
-  with_players: boolean
+  with_players?: boolean
 
   /**
    * Whether to precalculate data of the players (apm, vs, pps and rank variations)
    */
-  precalculate: boolean
+  precalculate?: boolean
 
   /**
    * Whether to include the old leaderboard
    * The one this leaderboard is being compared to. 
    */
-  include_old: boolean
+  include_old?: boolean
 }
 
 type LeaderboardPlayer = {
@@ -36,7 +38,14 @@ type LeaderboardPlayer = {
     pps: number
     vs: number
   },
-
+  /** Only included if `with_players = true` & `precalculate = true` */
+  variations?: {
+    tr: number
+    glicko: number
+    pps: number
+    apm: number
+    vs: number
+  }
 }
 
 type LeaderboardSums = {
@@ -89,5 +98,16 @@ type CountryLeaderboard = {
 
 type RankingLeaderboardResponse = {
   latestLeaderboards: CountryLeaderboard[]
+  /** Only included if `include_old = true` is passed to the query options */
   oldLeaderboards?: CountryLeaderboard[]
+}
+
+const Endpoint = {
+  get: (params?: RankingQueryParams) => `${API_URL}/api/country_rankings${buildUrl("", params)}`
+}
+
+export const RankingsAPI = {
+  get: async (params?: RankingQueryParams) => {
+    return await fetch(Endpoint.get(params), { method: "GET" }).then(res => res.json()) as Promise<RankingLeaderboardResponse>
+  }
 }
