@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "tml-api-lib",
+      "name": "tetrislatam-api",
       "devDependencies": {
         "@types/bun": "latest",
       },
