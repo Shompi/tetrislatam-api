@@ -19,7 +19,7 @@
   "scripts": {
     "clean": "bunx rimraf dist",
     "build": "bun run clean && bunx tsc -p tsconfig.json",
-    "prepublishOnly": "bunx run build"
+    "prepublishOnly": "bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest"
