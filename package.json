@@ -18,9 +18,7 @@
   ],
   "scripts": {
     "clean": "bunx rimraf dist",
-    "build:cjs": "bunx tsc -p tsconfig.cjs.json && echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
-    "build:esm": "bunx tsc -p tsconfig.esm.json",
-    "build": "bun run clean && bun run build:cjs && bun run build:esm",
+    "build": "bun run clean && bunx tsc -p tsconfig.json",
     "prepublishOnly": "bunx run build"
   },
   "devDependencies": {
