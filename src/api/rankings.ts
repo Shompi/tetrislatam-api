@@ -9,17 +9,17 @@ export type RankingQueryParams = {
 }
 
 // Auxiliary Types
-type LeaderboardSums = {
+export type LeaderboardSums = {
   by_tr: { tr: number; apm: number; pps: number; vs: number }
   by_glicko: { glicko: number; apm: number; pps: number; vs: number }
 }
 
-type LeaderboardVariations = {
+export type LeaderboardVariations = {
   tr: number; glicko: number
 }
 
 // Base Types
-type BaseLeaderboardPlayer = {
+export type BaseLeaderboardPlayer = {
   _id: string
   rank_tr: number
   rank_glicko: number
@@ -30,7 +30,7 @@ type BaseLeaderboardPlayer = {
   }
 }
 
-type BaseCountryLeaderboard = {
+export type BaseCountryLeaderboard = {
   key: number
   country: string
   last_updated: string
@@ -44,13 +44,13 @@ type BaseCountryLeaderboard = {
 // Conditional Types.
 
 // Player: Agrega `variations` solo si precalculate es true
-type LeaderboardPlayer<T extends RankingQueryParams> = BaseLeaderboardPlayer &
+export type LeaderboardPlayer<T extends RankingQueryParams> = BaseLeaderboardPlayer &
   (T["precalculate"] extends true
     ? { variations: { tr: number; glicko: number; pps: number; apm: number; vs: number } }
     : {})
 
 // CountryLeaderboard: Agrega `players`, `sums` y `variations` según los flags
-type CountryLeaderboard<T extends RankingQueryParams> = BaseCountryLeaderboard &
+export type CountryLeaderboard<T extends RankingQueryParams> = BaseCountryLeaderboard &
   (T["with_players"] extends true
     ? { players: LeaderboardPlayer<T>[] }
     : {}) &
@@ -62,7 +62,7 @@ type CountryLeaderboard<T extends RankingQueryParams> = BaseCountryLeaderboard &
     : {})
 
 // Response: Agrega `oldLeaderboards` solo si include_old es true
-type RankingLeaderboardResponse<T extends RankingQueryParams> = {
+export type RankingLeaderboardResponse<T extends RankingQueryParams> = {
   latestLeaderboards: CountryLeaderboard<T>[]
 } & (T["include_old"] extends true
   ? { oldLeaderboards: CountryLeaderboard<T>[] }

@@ -1,22 +1,22 @@
 import { APIError } from "../extends/api_errors.ts";
 import { API_URL } from "./helpers.ts";
 
-type APICoach = {
+export type APICoach = {
   id: string
   name: string
   about_me: string | null
   is_active: boolean
 }
 
-type APICoachCreationData = {
+export type APICoachCreationData = {
   name: string
   about_me?: string | null
   is_active?: boolean
 }
 
-type APICoachUpdateData = Partial<Omit<APICoach, "id">>
+export type APICoachUpdateData = Partial<Omit<APICoach, "id">>
 
-type APICoachSocial = {
+export type APICoachSocial = {
   id: string
   /** The ID of the coach this social network belongs to */
   coach_id: string
@@ -24,20 +24,20 @@ type APICoachSocial = {
   profile_url: string
 }
 
-type APISocialCreationData = {
+export type APISocialCreationData = {
   coach_id: string
   profile_url: string
 }
 
-type APIStudent = {
+export type APIStudent = {
   /** Discord ID or unique identifier for this student. */
   id: string
   name: string
 }
 
-type APIStudentCreationData = APIStudent
+export type APIStudentCreationData = APIStudent
 
-type APICoachingTicket = {
+export type APICoachingTicket = {
   id: number,
   hash: string
   student_id: string
@@ -54,12 +54,12 @@ type APICoachingTicket = {
   discord_message: string | null
 }
 
-type APICoachingTicketCreationData = Partial<Omit<APICoachingTicket, "id">> & {
+export type APICoachingTicketCreationData = Partial<Omit<APICoachingTicket, "id">> & {
   student_id: string
   ingame_name: string
 }
 
-type APICoachingTicketPatchData = Partial<Omit<APICoachingTicket, "id">>
+export type APICoachingTicketPatchData = Partial<Omit<APICoachingTicket, "id">>
 
 const Routes = {
   Coach: {

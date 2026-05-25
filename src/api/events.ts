@@ -1,11 +1,11 @@
 import { APIError } from "../extends/api_errors.ts"
 import { API_URL, buildUrl } from "./helpers.ts"
 
-type APIErrorBase = {
+export type APIErrorBase = {
   message: string
 }
 
-type APIEvent = {
+export type APIEvent = {
   /** UUIDV4 string */
   readonly id: string,
   /** El nombre del evento */
@@ -26,12 +26,12 @@ type APIEvent = {
   date: string
 }
 
-type EventGetQueryParams = {
+export type EventsQueryParams = {
   limit?: number
   offset?: number
 }
 
-type EventCreationData = {
+export type EventCreationData = {
   /** String between 1 and 100 characters. */
   name: string
 
@@ -84,10 +84,10 @@ type EventCreationData = {
   external_url?: string | null
 }
 
-type EventPatchData = Partial<EventCreationData>
+export type EventPatchData = Partial<EventCreationData>
 
 const EventsEndpoints = {
-  getAll: (params?: EventGetQueryParams) => `${API_URL}/api/events${buildUrl("", params)}` as const,
+  getAll: (params?: EventsQueryParams) => `${API_URL}/api/events${buildUrl("", params)}` as const,
   getOne: (eventId: string) => `${API_URL}/api/events/${eventId}` as const,
   create: `${API_URL}/api/events` as const,
   patch: (eventId: string) => `${API_URL}/api/events/${eventId}` as const,
@@ -96,7 +96,7 @@ const EventsEndpoints = {
 
 export const EventsAPI = {
   /** Status endpoint of the API, it should always return a **418** response code */
-  getAll: async (params?: EventGetQueryParams) => {
+  getAll: async (params?: EventsQueryParams) => {
     return await fetch(EventsEndpoints.getAll(params), { method: "GET" }).then(res => res.json()) as Promise<APIEvent[]>
   },
 

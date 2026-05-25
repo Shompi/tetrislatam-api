@@ -3,7 +3,7 @@ import { API_URL, buildUrl } from "./helpers.ts"
 
 type PostLanguages = "es" | "en" | "fr" | "de" | "it" | "pt" | "ru" | "zh" | "ja" | "ko"
 type TetoPiece = "T" | "O" | "L" | "J" | "Z" | "S" | "I"
-type APIWebpagePost = {
+export type APIWebpagePost = {
   /** UUID V7 */
   readonly id: string
   slug: string | null
@@ -35,7 +35,7 @@ type APIWebpagePost = {
   language: PostLanguages
 }
 
-type APIWebpagePostCreationData = {
+export type APIWebpagePostCreationData = {
   text: string
   /** Date formatted string */
   published_at: string
@@ -55,23 +55,23 @@ type APIWebpagePostCreationData = {
   language?: PostLanguages
 }
 
-type APIWebpageEditData = Partial<Omit<APIWebpagePostCreationData, "id">>
+export type APIWebpageEditData = Partial<Omit<APIWebpagePostCreationData, "id">>
 
-type QueryParams = {
+export type WebpagePostsQueryParams = {
   limit?: number
   offset?: number
   postId?: string
 }
 
 const Routes = {
-  getAll: (params?: QueryParams) => `${API_URL}/api/posts${buildUrl("", params)}` as const,
+  getAll: (params?: WebpagePostsQueryParams) => `${API_URL}/api/posts${buildUrl("", params)}` as const,
   create: `${API_URL}/api/posts` as const,
   edit: (id: string) => `${API_URL}/api/posts/${id}` as const,
   delete: (id: string) => `${API_URL}/api/posts/${id}` as const
 }
 
 export const WebpagePostsAPI = {
-  get: async (params?: QueryParams) => await fetch(Routes.getAll(params), { method: "GET" }).then(res => res.json()) as Promise<APIWebpagePost[]>,
+  get: async (params?: WebpagePostsQueryParams) => await fetch(Routes.getAll(params), { method: "GET" }).then(res => res.json()) as Promise<APIWebpagePost[]>,
   create: async (token: string, data: APIWebpagePostCreationData) => {
 
     if (!token) throw new Error("You must provide an authorization token to this function.")
