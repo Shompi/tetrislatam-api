@@ -75,7 +75,7 @@ const Routes = {
   },
   Student: {
     get: (id: string) => `${API_URL}/api/coaching/students/${id}` as const,
-    tickets: (id: string) => `${API_URL}/api/coaching/students/${id}/tickets` as const,
+    getTickets: (id: string) => `${API_URL}/api/coaching/students/${id}/tickets` as const,
     /** This endpoint needs authentication */
     create: `${API_URL}/api/coaching/students` as const,
   },
