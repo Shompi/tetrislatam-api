@@ -1,11 +1,11 @@
 import { APIError } from "../extends/api_errors.js";
 import { API_URL, buildUrl } from "./helpers.js";
 const EventsEndpoints = {
-    getAll: (params) => `${API_URL}/api/events${buildUrl("", params)}`,
-    getOne: (eventId) => `${API_URL}/api/events/${eventId}`,
-    create: `${API_URL}/api/events`,
-    patch: (eventId) => `${API_URL}/api/events/${eventId}`,
-    delete: (eventId) => `${API_URL}/api/events/${eventId}`
+    getAll: (params) => `${API_URL}/events${buildUrl("", params)}`,
+    getOne: (eventId) => `${API_URL}/events/${eventId}`,
+    create: `${API_URL}/events`,
+    patch: (eventId) => `${API_URL}/events/${eventId}`,
+    delete: (eventId) => `${API_URL}/events/${eventId}`
 };
 export const EventsAPI = {
     /** Status endpoint of the API, it should always return a **418** response code */

@@ -1,10 +1,10 @@
 import { APIError } from "../extends/api_errors.js";
 import { API_URL, buildUrl } from "./helpers.js";
 const Routes = {
-    getAll: (params) => `${API_URL}/api/posts${buildUrl("", params)}`,
-    create: `${API_URL}/api/posts`,
-    edit: (id) => `${API_URL}/api/posts/${id}`,
-    delete: (id) => `${API_URL}/api/posts/${id}`
+    getAll: (params) => `${API_URL}/posts${buildUrl("", params)}`,
+    create: `${API_URL}/posts`,
+    edit: (id) => `${API_URL}/posts/${id}`,
+    delete: (id) => `${API_URL}/posts/${id}`
 };
 export const WebpagePostsAPI = {
     get: async (params) => await fetch(Routes.getAll(params), { method: "GET" }).then(res => res.json()),

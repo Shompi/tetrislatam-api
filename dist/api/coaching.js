@@ -2,32 +2,32 @@ import { APIError } from "../extends/api_errors.js";
 import { API_URL } from "./helpers.js";
 const Routes = {
     Coach: {
-        getAll: `${API_URL}/api/coaching/coach`,
-        get: (id) => `${API_URL}/api/coaching/coach/${id}`,
-        getTickets: (coach_id) => `${API_URL}/api/coaching/coach/${coach_id}/tickets`,
+        getAll: `${API_URL}/coaching/coach`,
+        get: (id) => `${API_URL}/coaching/coach/${id}`,
+        getTickets: (coach_id) => `${API_URL}/coaching/coach/${coach_id}/tickets`,
         /** This endpoint needs authentication */
-        create: `${API_URL}/api/coaching/coach`,
+        create: `${API_URL}/coaching/coach`,
         /** This endpoint needs authentication */
-        update: (id) => `${API_URL}/api/coaching/coach/${id}`,
+        update: (id) => `${API_URL}/coaching/coach/${id}`,
         /** This endpoint needs authentication */
-        delete: (id) => `${API_URL}/api/coaching/coach/${id}`,
+        delete: (id) => `${API_URL}/coaching/coach/${id}`,
     },
     Student: {
-        get: (id) => `${API_URL}/api/coaching/students/${id}`,
-        getTickets: (id) => `${API_URL}/api/coaching/students/${id}/tickets`,
+        get: (id) => `${API_URL}/coaching/students/${id}`,
+        getTickets: (id) => `${API_URL}/coaching/students/${id}/tickets`,
         /** This endpoint needs authentication */
-        create: `${API_URL}/api/coaching/students`,
+        create: `${API_URL}/coaching/students`,
     },
     Tickets: {
-        get: (id) => `${API_URL}/api/coaching/tickets/${id}`,
+        get: (id) => `${API_URL}/coaching/tickets/${id}`,
         /** This endpoint needs authentication */
-        create: `${API_URL}/api/coaching/tickets`,
+        create: `${API_URL}/coaching/tickets`,
         /** This endpoint needs authentication */
-        update: (id) => `${API_URL}/api/coaching/tickets/${id}`,
+        update: (id) => `${API_URL}/coaching/tickets/${id}`,
         /** This endpoint needs authentication */
-        claim: (id, coach_id) => `${API_URL}/api/coaching/tickets/${id}/claim?coachId=${coach_id}`,
+        claim: (id, coach_id) => `${API_URL}/coaching/tickets/${id}/claim?coachId=${coach_id}`,
         /** This endpoint needs authentication */
-        delete: (id) => `${API_URL}/api/coaching/tickets/${id}`,
+        delete: (id) => `${API_URL}/coaching/tickets/${id}`,
     },
 };
 export const CoachingAPI = {

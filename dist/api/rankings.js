@@ -1,6 +1,6 @@
 import { API_URL, buildUrl } from "./helpers.js";
 const Endpoint = {
-    get: (params) => `${API_URL}/api/country_rankings${buildUrl("", params)}`
+    get: (params) => `${API_URL}/country_rankings${buildUrl("", params)}`
 };
 export const RankingsAPI = {
     get: async (params) => {
