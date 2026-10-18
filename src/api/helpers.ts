@@ -1,4 +1,4 @@
-export const API_URL = "https://shompi-vpn.ddns.net" as const
+export const API_URL = "https://api.shompiflen.party" as const
 
 
 export function buildUrl(
