@@ -70,7 +70,7 @@ export type RankingLeaderboardResponse<T extends RankingQueryParams> = {
 
 
 const Endpoint = {
-  get: (params?: RankingQueryParams) => `${API_URL}/api/country_rankings${buildUrl("", params)}`
+  get: (params?: RankingQueryParams) => `${API_URL}/country_rankings${buildUrl("", params)}`
 }
 
 export const RankingsAPI = {

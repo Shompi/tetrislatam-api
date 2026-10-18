@@ -87,11 +87,11 @@ export type EventCreationData = {
 export type EventPatchData = Partial<EventCreationData>
 
 const EventsEndpoints = {
-  getAll: (params?: EventsQueryParams) => `${API_URL}/api/events${buildUrl("", params)}` as const,
-  getOne: (eventId: string) => `${API_URL}/api/events/${eventId}` as const,
-  create: `${API_URL}/api/events` as const,
-  patch: (eventId: string) => `${API_URL}/api/events/${eventId}` as const,
-  delete: (eventId: string) => `${API_URL}/api/events/${eventId}` as const
+  getAll: (params?: EventsQueryParams) => `${API_URL}/events${buildUrl("", params)}` as const,
+  getOne: (eventId: string) => `${API_URL}/events/${eventId}` as const,
+  create: `${API_URL}/events` as const,
+  patch: (eventId: string) => `${API_URL}/events/${eventId}` as const,
+  delete: (eventId: string) => `${API_URL}/events/${eventId}` as const
 }
 
 export const EventsAPI = {

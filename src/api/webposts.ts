@@ -64,10 +64,10 @@ export type WebpagePostsQueryParams = {
 }
 
 const Routes = {
-  getAll: (params?: WebpagePostsQueryParams) => `${API_URL}/api/posts${buildUrl("", params)}` as const,
-  create: `${API_URL}/api/posts` as const,
-  edit: (id: string) => `${API_URL}/api/posts/${id}` as const,
-  delete: (id: string) => `${API_URL}/api/posts/${id}` as const
+  getAll: (params?: WebpagePostsQueryParams) => `${API_URL}/posts${buildUrl("", params)}` as const,
+  create: `${API_URL}/posts` as const,
+  edit: (id: string) => `${API_URL}/posts/${id}` as const,
+  delete: (id: string) => `${API_URL}/posts/${id}` as const
 }
 
 export const WebpagePostsAPI = {

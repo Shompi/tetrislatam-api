@@ -65,35 +65,35 @@ export type APICoachingTicketPatchData = Partial<Omit<APICoachingTicket, "id">>;
 
 const Routes = {
   Coach: {
-    getAll: `${API_URL}/api/coaching/coach` as const,
-    get: (id: string) => `${API_URL}/api/coaching/coach/${id}` as const,
+    getAll: `${API_URL}/coaching/coach` as const,
+    get: (id: string) => `${API_URL}/coaching/coach/${id}` as const,
     getTickets: (coach_id: string) =>
-      `${API_URL}/api/coaching/coach/${coach_id}/tickets` as const,
+      `${API_URL}/coaching/coach/${coach_id}/tickets` as const,
     /** This endpoint needs authentication */
-    create: `${API_URL}/api/coaching/coach` as const,
+    create: `${API_URL}/coaching/coach` as const,
     /** This endpoint needs authentication */
-    update: (id: string) => `${API_URL}/api/coaching/coach/${id}` as const,
+    update: (id: string) => `${API_URL}/coaching/coach/${id}` as const,
     /** This endpoint needs authentication */
-    delete: (id: string) => `${API_URL}/api/coaching/coach/${id}` as const,
+    delete: (id: string) => `${API_URL}/coaching/coach/${id}` as const,
   },
   Student: {
-    get: (id: string) => `${API_URL}/api/coaching/students/${id}` as const,
+    get: (id: string) => `${API_URL}/coaching/students/${id}` as const,
     getTickets: (id: string) =>
-      `${API_URL}/api/coaching/students/${id}/tickets` as const,
+      `${API_URL}/coaching/students/${id}/tickets` as const,
     /** This endpoint needs authentication */
-    create: `${API_URL}/api/coaching/students` as const,
+    create: `${API_URL}/coaching/students` as const,
   },
   Tickets: {
-    get: (id: string) => `${API_URL}/api/coaching/tickets/${id}` as const,
+    get: (id: string) => `${API_URL}/coaching/tickets/${id}` as const,
     /** This endpoint needs authentication */
-    create: `${API_URL}/api/coaching/tickets` as const,
+    create: `${API_URL}/coaching/tickets` as const,
     /** This endpoint needs authentication */
-    update: (id: string) => `${API_URL}/api/coaching/tickets/${id}` as const,
+    update: (id: string) => `${API_URL}/coaching/tickets/${id}` as const,
     /** This endpoint needs authentication */
     claim: (id: string, coach_id: string) =>
-      `${API_URL}/api/coaching/tickets/${id}/claim?coachId=${coach_id}` as const,
+      `${API_URL}/coaching/tickets/${id}/claim?coachId=${coach_id}` as const,
     /** This endpoint needs authentication */
-    delete: (id: string) => `${API_URL}/api/coaching/tickets/${id}` as const,
+    delete: (id: string) => `${API_URL}/coaching/tickets/${id}` as const,
   },
 };
 
