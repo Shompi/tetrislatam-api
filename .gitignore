@@ -136,3 +136,6 @@ out
 
 # ignore folder
 test
+
+#bun
+bun.*

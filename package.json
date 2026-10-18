@@ -29,5 +29,8 @@
   "peerDependencies": {
     "typescript": "^6.0.3"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "tetrislatam-api": "github:Shompi/tetrislatam-api"
+  }
 }
